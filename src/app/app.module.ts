@@ -3,16 +3,30 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { PlayersModule } from './players/players.module';
+import { TeamsModule } from './teams/teams.module';
+import { AskModule } from './ask/ask.module';
+
 import { AppComponent } from './app.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+
+import {AppRoutingModule} from './app.routing';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotFoundComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    PlayersModule,
+    TeamsModule,
+    AskModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
