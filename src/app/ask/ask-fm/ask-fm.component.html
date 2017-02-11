@@ -1,0 +1,31 @@
+
+<div class="row">
+  <div class="col-md-12" style="margin-bottom: 20px;">
+    <app-ask-search></app-ask-search>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card" style="margin-bottom: 20px;"
+         *ngFor="let ask of asks | paginate: { itemsPerPage: _perPage, currentPage: p, totalItems: _total||10}"
+         (click)="onSelect(ask.question_id)"
+         [class.selected]="ask === selectedAsk">
+      <div class="card-header">
+        {{ask.question}}
+      </div>
+      <div class="card-block">
+        <p class="card-text">{{ask.answer}}</p>
+      </div>
+      <div class="card-footer text-muted">
+        {{ask.q_date}}
+      </div>
+    </div>
+
+    <div class="has-text-centered">
+      <pagination-controls (pageChange)="p = loadData($event)"></pagination-controls>
+    </div>
+  </div>
+</div>
+
+
