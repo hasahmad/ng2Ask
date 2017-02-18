@@ -9,8 +9,9 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import {AskSearchService} from '../../common/ask-search.service';
-import {Ask} from '../../common/ask';
+import {AskFMSearchService} from '../../common/ask-fm-search.service';
+
+import {AskFM} from '../../common/ask-fm';
 
 @Component({
   moduleId: module.id,
@@ -20,11 +21,10 @@ import {Ask} from '../../common/ask';
 })
 export class AskSearchComponent implements OnInit {
 
-
-  asks: Observable<Ask[]>;
+  asks: Observable<AskFM[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private _askSearchService:AskSearchService,
+  constructor(private _askSearchService:AskFMSearchService,
               private router: Router) {}
 
   search(term: string): void {
@@ -37,15 +37,16 @@ export class AskSearchComponent implements OnInit {
       .distinctUntilChanged()
       .switchMap(term => term
         ? this._askSearchService.search(term)
-        : Observable.of<Ask[]>([]))
+        : Observable.of<AskFM[]>([]))
       .catch(error => {
         console.log(error);
-        return Observable.of<Ask[]>([]);
+        return Observable.of<AskFM[]>([]);
       });
+      // console.log(this.asks);
   }
 
-  gotoDetail(ask: Ask): void {
-    let link = ['/ask/detail', ask.id];
+  gotoDetail(ask: AskFM): void {
+    let link = ['/ask-fm/detail', ask.id];
     this.router.navigate(link);
   }
 

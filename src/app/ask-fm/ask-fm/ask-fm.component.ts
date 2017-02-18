@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
 
-import {Ask} from '../../common/ask';
+import {AskFM} from '../../common/ask-fm';
 import {AskFmService} from '../../common/ask-fm.service';
 
 @Component({
@@ -12,7 +12,7 @@ import {AskFmService} from '../../common/ask-fm.service';
 export class AskFmComponent implements OnInit {
 
   public asks = [];
-  public selectedAsk: Ask;
+  public selectedAsk: AskFM;
   public _total: any;
   public _perPage: any;
 
@@ -38,12 +38,12 @@ export class AskFmComponent implements OnInit {
     return event;
   }
 
-  onSelect(ask: Ask): void {
+  onSelect(ask: AskFM): void {
     this.selectedAsk = ask;
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/ask/detail', this.selectedAsk.id]);
+    this.router.navigate(['/ask-fm/detail', this.selectedAsk.id]);
   }
 
 }

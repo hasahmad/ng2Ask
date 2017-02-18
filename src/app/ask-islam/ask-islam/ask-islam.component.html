@@ -1,0 +1,48 @@
+
+<div class="row">
+	<div class="col-md-12" style="margin-bottom: 20px;">
+		<app-ask-islam-search></app-ask-islam-search>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="card" style="margin-bottom: 20px;"
+			*ngFor="let ask of asks | paginate: { itemsPerPage: _perPage, currentPage: p, totalItems: _total||10}"
+			(click)="onSelect(ask.id)"
+			[class.selected]="ask === selectedAsk">
+			
+			<div class="card-header">{{ask.question}}</div>
+
+			<div class="card-block">
+				<div class="row" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+					<div class="col-md-12 col-sm-12">
+						<a class="card-text" href="{{ask.answer_link}}" target="_blank">{{ask.answer_link}}</a>
+					</div>
+					
+					<div class="col-md-12 col-sm-12" style="margin-top: 10px;">
+						<audio controls="controls" style="width: 100%">
+							<source src="{{ask.answer_link}}" type="audio/mpeg">
+						</audio>
+					</div>
+				</div>
+			</div>
+			
+			<div class="card-footer text-muted">
+				<div class="row">
+					<div class="col-md-4"><strong>Author:</strong> {{ask.author}}</div>
+					<div class="col-md-2"><strong>Duration:</strong> {{ask.duration}}</div>
+					<div class="col-md-2"><strong>Date:</strong> {{ask.date}}</div>
+					<div class="col-md-2"><strong>Audience:</strong> {{ask.audience}}</div>
+					<div class="col-md-2"><strong>Language:</strong> {{ask.language}}</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="has-text-centered">
+			<pagination-controls (pageChange)="p = loadData($event)"></pagination-controls>
+		</div>
+	</div>
+</div>
+
+

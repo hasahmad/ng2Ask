@@ -3,7 +3,7 @@ import { Component, OnInit }      from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location }               from '@angular/common';
 
-import {Ask} from '../../common/ask';
+import {AskFM} from '../../common/ask-fm';
 import {AskFmService} from '../../common/ask-fm.service';
 
 
@@ -15,7 +15,7 @@ import {AskFmService} from '../../common/ask-fm.service';
 })
 
 export class AskDetailComponent implements OnInit {
-  ask: Ask;
+  ask: AskFM;
 
   constructor(
     private askService: AskFmService,

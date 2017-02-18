@@ -4,20 +4,20 @@ import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import {Ask}           from './ask';
+import {AskIslam}           from './ask-islam';
 
 @Injectable()
-export class AskSearchService {
+export class AskIslamSearchService {
 
-  private askSearchUrl = 'https://api.ahmadhas.com/api/v1/ask/s/';
+  private askIslamSearchUrl = 'https://api.ahmadhas.com/api/v1/ask-islam/s/';
 
   constructor(private http: Http) {}
 
-  search(term: string): Observable<Ask[]> {
+  search(term: string): Observable<AskIslam[]> {
 
     return this.http
-      .get(`${this.askSearchUrl}${term}`)
-      .map((res: Response) => res.json().data as Ask[]);
+      .get(`${this.askIslamSearchUrl}${term}`)
+      .map((res: Response) => res.json().data as AskIslam[]);
   }
 
   private handleError(error: any): Observable<any> {

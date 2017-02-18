@@ -7,10 +7,10 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/catch';
 
-import {AskFM} from "./ask-fm";
+import {AskIslam} from "./ask-islam";
 
 @Injectable()
-export class AskFmService {
+export class AskIslamService {
 
   baseAskUrl:string;
 
@@ -18,15 +18,15 @@ export class AskFmService {
     this.baseAskUrl = 'https://api.ahmadhas.com/api/v1/';
   }
 
-  getData(page: number): Observable<AskFM[]> {
+  getData(page: number): Observable<AskIslam[]> {
 
-    return this._http.get(`${this.baseAskUrl}ask-fm?page=${page}`)
+    return this._http.get(`${this.baseAskUrl}ask-islam?page=${page}`)
       .map((res: Response) => res.json())
       .catch(this.handleError);
   }
 
-  getAsk(id: number): Observable<AskFM> {
-    const url = `${this.baseAskUrl}ask-fm/${id}`;
+  getAsk(id: number): Observable<AskIslam> {
+    const url = `${this.baseAskUrl}ask-islam/${id}`;
 
     return this._http.get(url)
       .map((response: any) => response.json().data)

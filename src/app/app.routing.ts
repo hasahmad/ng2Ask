@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {NotFoundComponent} from './not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/ask', pathMatch: 'full' },
+  { path: '', redirectTo: '/ask-fm', pathMatch: 'full' },
   {path: '**', component: NotFoundComponent}
 ];
 

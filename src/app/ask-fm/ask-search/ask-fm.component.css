@@ -10,3 +10,10 @@
 .search-result a {
   background-color: #f7f7f9;
 }
+
+#search-results {
+    border: 1px solid #ccc;
+    border-top-color: #d9d9d9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}

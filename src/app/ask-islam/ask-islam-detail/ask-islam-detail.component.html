@@ -1,0 +1,32 @@
+<div *ngIf="ask" class="row">
+  <div class="col-md-12">
+    <div class="card" style="margin-bottom: 20px;" *ngFor="let ask_q of ask">
+      <div class="card-header">
+        {{ask_q.question}}
+      </div>
+      <div class="card-block">
+        <div class="row" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+          <div class="col-md-12 col-sm-12">
+            <a class="card-text" href="{{ask_q.answer_link}}" target="_blank">{{ask_q.answer_link}}</a>
+          </div>
+          
+          <div class="col-md-12 col-sm-12" style="margin-top: 10px;">
+            <audio controls="controls" style="width: 100%">
+              <source src="{{ask_q.answer_link}}" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+				<div class="row">
+					<div class="col-md-4"><strong>Author:</strong> {{ask_q.author}}</div>
+					<div class="col-md-2"><strong>Duration:</strong> {{ask_q.duration}}</div>
+					<div class="col-md-2"><strong>Date:</strong> {{ask_q.date}}</div>
+					<div class="col-md-2"><strong>Audience:</strong> {{ask_q.audience}}</div>
+					<div class="col-md-2"><strong>Language:</strong> {{ask_q.language}}</div>
+				</div>
+			</div>
+    </div>
+  </div>
+  <div class="col-md-12"><button (click)="goBack()" class="btn btn-primary">Back</button></div>
+</div>

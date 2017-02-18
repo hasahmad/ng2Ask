@@ -5,8 +5,8 @@ import {AskFmComponent} from './ask-fm/ask-fm.component';
 import {AskDetailComponent} from "./ask-detail/ask-detail.component";
 
 const routes: Routes = [
-  {path: 'ask', component: AskFmComponent},
-  {path: 'ask/detail/:id', component: AskDetailComponent}
+  {path: 'ask-fm', component: AskFmComponent},
+  {path: 'ask-fm/detail/:id', component: AskDetailComponent}
 ];
 
 @NgModule({
