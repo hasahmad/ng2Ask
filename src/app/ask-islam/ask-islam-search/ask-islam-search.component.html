@@ -5,7 +5,7 @@
       <span class="input-group-addon" id="basic-addon1">Search</span>
       <input #searchBox class="form-control" id="search-box" (keyup)="search(searchBox.value)" />
     </div>
-    <div class="col-md-11 offset-md-1" id="search-results" *ngIf="asks">
+    <div class="col-md-12 pre-scrollable" id="search-results" *ngIf="asks">
       <div class="list-group search-result" *ngFor="let ask of asks | async">
         <a (click)="gotoDetail(ask)" class="list-group-item list-group-item-action">{{ask.question}}</a>
       </div>

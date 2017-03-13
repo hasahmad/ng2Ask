@@ -13,16 +13,34 @@ import {AskFM} from "./ask-fm";
 export class AskFmService {
 
   baseAskUrl:string;
+  private data: AskFM[];
+  private observable: Observable<any>;
 
   constructor(private _http:Http) {
     this.baseAskUrl = 'https://api.ahmadhas.com/api/v1/';
   }
 
   getData(page: number): Observable<AskFM[]> {
-
-    return this._http.get(`${this.baseAskUrl}ask-fm?page=${page}`)
-      .map((res: Response) => res.json())
-      .catch(this.handleError);
+    if(this.data) {
+      return Observable.of(this.data);
+    } else if(this.observable) {
+      return this.observable;
+    } else {
+      return this._http.get(`${this.baseAskUrl}ask-fm?page=${page}`)
+        .map((res: Response) => res.json()).publishReplay(1).refCount()
+        // .map((response: Response) => {
+        //   this.observable = null;
+        //   if(response.status == 400) {
+        //     return "FAILURE";
+        //   } else if(response.status == 200) {
+        //     this.data = response.json();
+        //     return this.data;
+        //   }
+        //   // res.json()
+        // }).publishReplay(1).refCount()
+        .catch(this.handleError);
+      // return this.observable;
+    }
   }
 
   getAsk(id: number): Observable<AskFM> {

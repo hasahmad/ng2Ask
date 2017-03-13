@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router }            from '@angular/router';
 
 import {AskFM} from '../../common/ask-fm';
 import {AskFmService} from '../../common/ask-fm.service';
+import {PouchdbService} from '../../common/pouchdb.service';
 
 @Component({
   selector: 'app-ask-fm',
@@ -20,7 +21,9 @@ export class AskFmComponent implements OnInit {
     this.loadData(1);
   }
   constructor(private _askService:AskFmService,
-              private router: Router) {}
+              private router: Router,
+              private database: PouchdbService, 
+              private zone: NgZone) {}
 
   loadData(event) {
     this._askService.getData(event).subscribe(
